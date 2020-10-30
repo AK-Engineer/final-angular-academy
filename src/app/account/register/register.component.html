@@ -1,0 +1,75 @@
+<!-- The register component template contains a simple registration form with fields
+  for first name, last name, username and password. It displays validation messages for invalid fields when the submit button is clicked.
+   The form element uses the [formGroup] directive to bind to the form FormGroup in the register component below,
+   and it binds the form submit event to the onSubmit() handler in the register component using the angular event binding
+   (ngSubmit)="onSubmit()". -->
+<!-- Default form register -->
+<form class="text-center border border-light p-5" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <p class="h4 mb-4">Sign up</p>
+
+  <div class="form-row mb-4">
+    <div class="col">
+      <!-- First name -->
+      <input type="text" formControlName="firstname" id="defaultRegisterFormFirstName" class="form-control" placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }"/>
+      <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback alert alert-danger" role="alert">                    
+        <div *ngIf="f.firstname.errors.required">First Name is required</div>              
+      </div>
+    </div>
+    <div class="col">
+      <!-- Last name -->
+      <input type="text" formControlName="lastname" id="defaultRegisterFormLastName" class="form-control" placeholder="Last Name"  [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }"/>
+      <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback alert alert-danger" role="alert">       
+        <div *ngIf="f.lastname.errors.required">Last Name is required</div>                   
+      </div>
+    </div>
+  </div>
+                
+  <!-- Username -->
+  <input type="text" formControlName="username" id="defaultRegisterFormUsername" class="form-control mb-4" placeholder="Username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+  <div *ngIf="submitted && f.username.errors" class="invalid-feedback alert alert-danger" role="alert">                    
+    <div *ngIf="f.username.errors.required">Username is required</div>             
+  </div>
+                
+  <!-- Password -->
+  <input type="password" formControlName="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password"
+    aria-describedby="defaultRegisterFormPasswordHelpBlock" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+  <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+    At least 6 characters
+  </small>
+  <div *ngIf="submitted && f.password.errors" class="invalid-feedback alert alert-danger" role="alert">                
+    <div *ngIf="f.password.errors.required">Password is required</div>                
+    <div *ngIf="f.password.errors.minlength">
+      Password must be at least 6 characters
+    </div>               
+  </div>
+
+  <!-- Confirm Password -->
+  <input type="password" formControlName="confirmPassword" id="defaultRegisterFormConfPassword" class="form-control" placeholder="Confirm Password"
+  aria-describedby="defaultRegisterFormPasswordHelpBlock" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"/>
+<small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+  At least 6 characters
+</small>
+<div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback alert alert-danger" role="alert">                   
+  <div *ngIf="f.confirmPassword.errors.required">
+    Confirm Password is required
+  </div>              
+  <div *ngIf="f.confirmPassword.errors.mustMatch">
+    Passwords must match
+  </div>            
+</div>
+
+  <!-- Sign up button -->
+  <button mdbBtn color="success" block="true" class="my-4" type="submit">
+    Sign Up
+  </button>
+  <a routerLink="../login" class="btn btn-link">Cancel</a>
+
+  <hr />
+
+  <!-- Terms of service -->
+  <p>
+    By clicking <em>Sign up</em> you agree to our
+    <a href="https://www.arhs-group.com/" target="_blank">terms of service</a>
+  </p>
+</form>
+<!-- Default form register -->

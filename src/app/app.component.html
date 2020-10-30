@@ -1,0 +1,46 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color-dark" [containerInside]="false" *ngIf="user">
+  <!-- Navbar brand -->
+  <mdb-navbar-brand><a class="navbar-brand" href="#">ArhsFlix</a></mdb-navbar-brand>
+  <!-- Collapsible content -->
+  <links>
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/movies" routerLinkActive="active">All Movies</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-light" mdbWavesEffect routerLink="/favorites" routerLinkActive="active">Favorite Movies</a>
+      </li>
+    </ul>
+
+    <!-- Profile Icon In the right -->
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <!-- Dropdown -->
+    <li class="nav-item dropdown" dropdown>
+      <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+        <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span></a>
+      <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+        <a class="dropdown-item waves-light" mdbWavesEffect  routerLink="/edit">Edit Profile</a>
+        <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Log out</a>
+      </div>
+    </li>
+    </ul>
+  </links>
+  <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->
+
+
+
+
+<!-- main app container  -->
+<div class="app-container" [ngClass]="{ 'bg-light': user }" >
+  <alert></alert>
+  <router-outlet></router-outlet>
+</div>
+

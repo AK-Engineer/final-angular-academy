@@ -1,0 +1,6 @@
+<!-- Displaying alert messages at the top of the page
+  it renders a notification for each alert in the alerts array of the alert component -->
+<div *ngFor="let alert of alerts" class="{{cssClass(alert)}}">
+  <a class="close" (click)="removeAlert(alert)">&times;</a>
+  <span [innerHTML]="alert.message"></span>
+</div>

@@ -1,0 +1,35 @@
+<h1>My Movies</h1>
+<table mdbTable hover="true">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Date Released</th>
+      <th scope="col"><mdb-icon fas icon="heart" class="mr-2 blue-text" aria-hidden="true"></mdb-icon></th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr mdbTableCol *ngFor="let movie of movies">
+      <th scope="row">{{movie.id}}</th>
+      <td>{{movie.title}}</td>
+      <td>{{movie.description}}</td>
+      <td>{{movie.dateReleased}}</td>
+      <td>
+        <!-- Default checked -->
+        <div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" id="isFavorite" checked>
+          <label class="custom-control-label" for="isFavorite"></label>
+        </div>
+      </td>
+      <td>
+        <div class="btn-group" role="group" aria-label="Actions">
+          <button mdbBtn  type="button" color="success" class="waves-light" mdbWavesEffect>Edit</button>
+          <button mdbBtn  type="button" color="danger" class="waves-light" mdbWavesEffect>Remove</button>
+      </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
